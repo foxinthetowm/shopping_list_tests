@@ -1,1 +1,0 @@
-{"uuid":"cf0d67d6-1033-4cc1-a4d1-0a464b6787db","name":"Default Suite","start":1512427864533,"stop":1512427872901,"children":["01c6f8d3-ef6b-44d4-bba9-bc5832912698"],"befores":[{"name":"setUpAppium","stage":"finished","description":"","start":1512427864682,"stop":1512427871093}]}
