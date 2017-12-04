@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="My test suite">
+    <test name="testing">
+        <classes>
+            <class name="tests.AddEmptyListTest" />
+            <class name="tests.AddProductToExistingListTest" />
+            <class name="tests.ChangeOrientationTest" />
+            <class name="tests.ClickNoInRemoveListWindowTest" />
+            <class name="tests.CreateListWithItemsTest" />
+            <class name="tests.CurrencySettingsTest" />
+            <class name="tests.DoNotSaveProductTest" />
+            <class name="tests.RemoveListTest" />
+            <class name="tests.SortProductsByTest" />
+            <class name="tests.EditListNameTest" />
+        </classes>
+    </test>
+</suite>

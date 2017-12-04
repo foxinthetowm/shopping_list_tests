@@ -1,0 +1,1 @@
+{"uuid":"11e1a636-a859-4ca9-8874-4fdb023f3b94","name":"tests.SortProductsByTest.restartApp","description":"","start":1512414170634,"stop":1512414175611,"children":["4fd0cc61-2a56-41fe-8820-1e3bc92a7e3f"],"afters":[{"name":"restartApp","stage":"finished","description":"","start":1512414170639,"stop":1512414175610}]}

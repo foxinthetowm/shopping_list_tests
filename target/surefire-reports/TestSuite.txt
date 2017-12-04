@@ -1,0 +1,43 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 985.68 sec <<< FAILURE! - in TestSuite
+removeNewList(tests.ClickNoInRemoveListWindowTest)  Time elapsed: 16.585 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: 
+An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.31 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
+System info: host: 'Alisinas-MBP', ip: '192.168.1.68', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_141'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, appPackage=com.slava.buylist, deviceScreenSize=1080x1920, networkConnectionEnabled=true, warnings={}, appWaitPackage=com.slava.buylist, appWaitActivity=com.slava.buylist.MainActivity, databaseEnabled=false, deviceName=emulator-5554, platform=LINUX, deviceUDID=emulator-5554, appActivity=com.slava.buylist.MainActivity, desired={app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, platformName=Android, deviceName=Nexus 5 API 23}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Android SDK built for x86, platformName=Android, deviceManufacturer=unknown}]
+Session ID: c1833405-638f-460c-a368-ba247d5e81ec
+*** Element info: {Using=xpath, value=//android.widget.TextView[@text='New list2']}
+	at tests.ClickNoInRemoveListWindowTest.removeNewList(ClickNoInRemoveListWindowTest.java:24)
+
+removeNewList(tests.RemoveListTest)  Time elapsed: 19.811 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: 
+An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.68 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
+System info: host: 'Alisinas-MBP', ip: '192.168.1.68', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_141'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, appPackage=com.slava.buylist, deviceScreenSize=1080x1920, networkConnectionEnabled=true, warnings={}, appWaitPackage=com.slava.buylist, appWaitActivity=com.slava.buylist.MainActivity, databaseEnabled=false, deviceName=emulator-5554, platform=LINUX, deviceUDID=emulator-5554, appActivity=com.slava.buylist.MainActivity, desired={app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, platformName=Android, deviceName=Nexus 5 API 23}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Android SDK built for x86, platformName=Android, deviceManufacturer=unknown}]
+Session ID: c1833405-638f-460c-a368-ba247d5e81ec
+*** Element info: {Using=xpath, value=//android.widget.RelativeLayout[android.widget.TextView[@text='New list2']]/android.widget.ImageView[@resource-id='com.slava.buylist:id/imageView1']}
+	at tests.RemoveListTest.removeNewList(RemoveListTest.java:28)
+
+addNewList(tests.EditListNameTest)  Time elapsed: 5.237 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: 
+An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.22 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
+System info: host: 'Alisinas-MBP', ip: '192.168.1.68', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_141'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, appPackage=com.slava.buylist, deviceScreenSize=1080x1920, networkConnectionEnabled=true, warnings={}, appWaitPackage=com.slava.buylist, appWaitActivity=com.slava.buylist.MainActivity, databaseEnabled=false, deviceName=emulator-5554, platform=LINUX, deviceUDID=emulator-5554, appActivity=com.slava.buylist.MainActivity, desired={app=/Users/alisina/IdeaProjects/android_shoppinglist_tests/src/test/resources/Shopping_list_1.6.apk, platformName=Android, deviceName=Nexus 5 API 23}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Android SDK built for x86, platformName=Android, deviceManufacturer=unknown}]
+Session ID: c1833405-638f-460c-a368-ba247d5e81ec
+*** Element info: {Using=xpath, value=//android.widget.RelativeLayout[android.widget.TextView[@text='New list']]/android.widget.ImageView[@resource-id='com.slava.buylist:id/imageView2']}
+	at tests.EditListNameTest.addNewList(EditListNameTest.java:32)
+

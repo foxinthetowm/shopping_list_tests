@@ -1,0 +1,1 @@
+{"uuid":"f8ecbbf3-b955-4692-ab27-14422d3f8796","name":"android_shoppinglist_tests","start":1512361170982,"stop":1512361315154,"children":["283202de-3e71-4f09-a794-53f9868d7eb1","fc4fd021-f390-42b4-91e1-5cef30b12285"],"afters":[{"name":"tearDown","stage":"finished","description":"","start":1512361312826,"stop":1512361315151}]}

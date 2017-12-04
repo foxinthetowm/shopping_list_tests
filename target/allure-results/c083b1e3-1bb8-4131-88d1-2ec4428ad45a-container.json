@@ -1,0 +1,1 @@
+{"uuid":"c083b1e3-1bb8-4131-88d1-2ec4428ad45a","name":"tests.ChangeOrientationTest.restartApp","description":"","start":1512429082403,"stop":1512429087702,"children":["c4e795e5-065c-4dfb-8516-30ad09459868"],"afters":[{"name":"restartApp","stage":"finished","description":"","start":1512429082403,"stop":1512429087702}]}
