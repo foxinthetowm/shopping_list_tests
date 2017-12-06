@@ -6,7 +6,7 @@ import pages.MainPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ClickNoInRemoveListWindowTest extends AndroidSetup {
+public class ClickNoInRemoveListWindowTest extends AbstractShoppingListTest {
 
     private final String listName = "New list2";
 
@@ -18,7 +18,7 @@ public class ClickNoInRemoveListWindowTest extends AndroidSetup {
     }
 
     @Test(description = "TC6: Cancel shopping list deleting")
-    public void removeNewList( ) {
+    public void clickNoInRemoveListWindow( ) {
         mainPage.headerDisplayed();
         mainPage.setTextIntoNewListField(listName);
         mainPage.clickAddButton();

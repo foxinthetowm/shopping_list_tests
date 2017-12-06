@@ -8,7 +8,7 @@ import pages.MainPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AddEmptyListTest extends AndroidSetup {
+public class AddEmptyListTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -20,12 +20,12 @@ public class AddEmptyListTest extends AndroidSetup {
 
     @BeforeTest
     public void setUp() {
-        mainPage = new MainPage(AndroidSetup.driver);
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
     }
 
     @Test(description = "[TC1] Add an empty shopping list", dataProvider =
             "Valid list names")
-    public void addNewList(String listName) {
+    public void addEmptyList(String listName) {
         mainPage
                 .headerDisplayed()
                 .setTextIntoNewListField(listName)

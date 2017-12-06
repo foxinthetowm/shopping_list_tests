@@ -8,7 +8,7 @@ import org.testng.asserts.SoftAssert;
 import pages.AddProductsPage;
 import pages.MainPage;
 
-public class CreateListWithItemsTest extends AndroidSetup {
+public class CreateListWithItemsTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -17,7 +17,7 @@ public class CreateListWithItemsTest extends AndroidSetup {
     private SoftAssert softAssertion = new SoftAssert();
 
     @DataProvider(name = "Products parameters")
-    public static Object[][] listNames() {
+    public static Object[][] listNames( ) {
         return new Object[][]{ { "New list", "product1", "3", "2", "comment",
                 "kg.", "Pet products", "6" }, { "New list1",
                 "product11", "1", "0", "comment",
@@ -25,8 +25,8 @@ public class CreateListWithItemsTest extends AndroidSetup {
     }
 
     @BeforeTest
-    private void setUp() {
-        mainPage = new MainPage(AndroidSetup.driver);
+    private void setUp( ) {
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
         productsPage = new AddProductsPage(driver);
     }
 
@@ -40,12 +40,10 @@ public class CreateListWithItemsTest extends AndroidSetup {
                                    String measure,
                                    String category,
                                    String total) {
-        mainPage = new MainPage(driver);
         mainPage
                 .headerDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
-        productsPage = new AddProductsPage(driver);
         productsPage.addProductScreenDisplayed();
         productsPage.addNewProduct(productName, price, amount, testComment,
                 measure, category);

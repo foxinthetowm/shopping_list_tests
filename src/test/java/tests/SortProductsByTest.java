@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SortProductsByTest extends AndroidSetup {
+public class SortProductsByTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -40,7 +40,7 @@ public class SortProductsByTest extends AndroidSetup {
 
     @BeforeTest
     private void setUp( ) {
-        mainPage = new MainPage(AndroidSetup.driver);
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
         productsPage = new AddProductsPage(driver);
         moreMenu = new MoreMenu(driver);
         settingsPage = new SettingsPage(driver);
@@ -48,26 +48,26 @@ public class SortProductsByTest extends AndroidSetup {
 
     @Test(description = "[TC7] Edit list: add a product", dataProvider =
             "Products parameters")
-    public void addNewItemToTheList(String listName,
-                                    String productName1,
-                                    String price1,
-                                    String amount1,
-                                    String testComment1,
-                                    String measure1,
-                                    String category1,
-                                    String productName2,
-                                    String price2,
-                                    String amount2,
-                                    String testComment2,
-                                    String measure2,
-                                    String category2, String productName3,
-                                    String price3,
-                                    String amount3,
-                                    String testComment3,
-                                    String measure3,
-                                    String category3,
-                                    String sortBy,
-                                    String[] expectedSorting) {
+    public void checkSortingProducts(String listName,
+                                     String productName1,
+                                     String price1,
+                                     String amount1,
+                                     String testComment1,
+                                     String measure1,
+                                     String category1,
+                                     String productName2,
+                                     String price2,
+                                     String amount2,
+                                     String testComment2,
+                                     String measure2,
+                                     String category2, String productName3,
+                                     String price3,
+                                     String amount3,
+                                     String testComment3,
+                                     String measure3,
+                                     String category3,
+                                     String sortBy,
+                                     String[] expectedSorting) {
         mainPage
                 .headerDisplayed()
                 .setTextIntoNewListField(listName)

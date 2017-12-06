@@ -8,7 +8,7 @@ import org.testng.asserts.SoftAssert;
 import pages.AddProductsPage;
 import pages.MainPage;
 
-public class AddProductToExistingListTest extends AndroidSetup {
+public class AddProductToExistingListTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -28,7 +28,7 @@ public class AddProductToExistingListTest extends AndroidSetup {
 
     @BeforeTest
     private void setUp( ) {
-        mainPage = new MainPage(AndroidSetup.driver);
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
         productsPage = new AddProductsPage(driver);
     }
 

@@ -8,7 +8,7 @@ import pages.MainPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AddListWithEmptyName extends AndroidSetup {
+public class AddListWithEmptyNameWithShortName extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -20,13 +20,13 @@ public class AddListWithEmptyName extends AndroidSetup {
 
     @BeforeTest
     public void setUp( ) {
-        mainPage = new MainPage(AndroidSetup.driver);
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
     }
 
     @Test(description = "[TC5] Check user cannot add a list with name shorter" +
             " " +
             "that 3 symbols", dataProvider = "Invalid list names")
-    public void addNewList(String listName) {
+    public void addNewListWithShortName(String listName) {
         mainPage
                 .headerDisplayed()
                 .setTextIntoNewListField(listName)

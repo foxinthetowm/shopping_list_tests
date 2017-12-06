@@ -8,7 +8,7 @@ import pages.SettingsPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class CurrencySettingsTest extends AndroidSetup {
+public class CurrencySettingsTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 

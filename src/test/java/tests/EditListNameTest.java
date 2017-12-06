@@ -7,7 +7,7 @@ import pages.MainPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class EditListNameTest extends AndroidSetup {
+public class EditListNameTest extends AbstractShoppingListTest {
 
     private final String oldName = "New list";
 
@@ -28,7 +28,7 @@ public class EditListNameTest extends AndroidSetup {
     }
 
     @Test(description = "[TC3] Edit list: edit name")
-    public void addNewList( ) {
+    public void editListName( ) {
         mainPage.clickEditButtonListWithName(oldName);
         editListWindow.setTextToTheNameField(newName).clickOk();
         assertThat(String.format("List with name %s does not exist", newName),

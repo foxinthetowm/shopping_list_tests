@@ -7,7 +7,7 @@ import pages.MainPage;
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class RemoveListTest extends AndroidSetup {
+public class RemoveListTest extends AbstractShoppingListTest {
 
     private final String listName = "New list2";
 

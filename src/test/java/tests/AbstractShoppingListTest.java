@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class AndroidSetup {
+public abstract class AbstractShoppingListTest {
 
     protected static AndroidDriver<AndroidElement> driver;
 

@@ -9,7 +9,7 @@ import pages.MainPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class DoNotSaveProductTest extends AndroidSetup {
+public class DoNotSaveProductTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -25,12 +25,13 @@ public class DoNotSaveProductTest extends AndroidSetup {
 
     @BeforeTest
     private void setUp( ) {
-        mainPage = new MainPage(AndroidSetup.driver);
+        mainPage = new MainPage(AbstractShoppingListTest.driver);
         productsPage = new AddProductsPage(driver);
         dialogWindow = new DialogWindow(driver);
     }
 
-    @Test(description = "[TC8] Create a list but do not save a new product")
+    @Test(description = "[TC8] Create a list but do not save a new product",
+            dataProvider = "Products parameters")
     public void doNotSaveNewProduct(String listName,
                                     String productName,
                                     String price,

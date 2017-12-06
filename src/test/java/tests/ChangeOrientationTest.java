@@ -10,7 +10,7 @@ import pages.SettingsPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ChangeOrientationTest extends AndroidSetup {
+public class ChangeOrientationTest extends AbstractShoppingListTest {
 
     private MainPage mainPage;
 
@@ -35,7 +35,7 @@ public class ChangeOrientationTest extends AndroidSetup {
 
     @Test(description = "[TC8] Change orientation in Settings menu ",
             dataProvider = "Orientations")
-    public void checkCurrencySettings(String orientation, String
+    public void checkOrientationSettings(String orientation, String
             expectedOrientation) {
         mainPage
                 .headerDisplayed()
