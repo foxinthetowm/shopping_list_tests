@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import steps.CommonSteps;
 import steps.DialogWindowSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 
 public class EditListNameTest extends AbstractShoppingListTest {
 
@@ -12,7 +12,7 @@ public class EditListNameTest extends AbstractShoppingListTest {
 
     private final String newName = "New list2";
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private DialogWindowSteps editListWindowStep;
 
@@ -20,20 +20,20 @@ public class EditListNameTest extends AbstractShoppingListTest {
 
     @BeforeTest
     public void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         editListWindowStep = new DialogWindowSteps(driver);
         commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC3] Edit list: edit name")
     public void editListName() {
-        mainPageSteps.checkPageDisplayed();
-        mainPageSteps.setTextIntoNewListField(oldName).clickAddButton();
+        shoppingListPageSteps.checkPageDisplayed();
+        shoppingListPageSteps.setTextIntoNewListField(oldName).clickAddButton();
         commonSteps.pressBackTwice();
-        mainPageSteps.listWithNameExists(oldName);
-        mainPageSteps.clickEditButtonListWithName(oldName);
+        shoppingListPageSteps.listWithNameExists(oldName);
+        shoppingListPageSteps.clickEditButtonListWithName(oldName);
         editListWindowStep.setTextToTheNameField(newName).clickOk();
-        mainPageSteps
+        shoppingListPageSteps
                 .listWithNameExists(newName);
     }
 }

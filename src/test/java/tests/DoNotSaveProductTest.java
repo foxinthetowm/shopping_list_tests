@@ -6,11 +6,11 @@ import org.testng.annotations.Test;
 import steps.AddProductPageSteps;
 import steps.CommonSteps;
 import steps.DialogWindowSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 
 public class DoNotSaveProductTest extends AbstractShoppingListTest {
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private AddProductPageSteps addProductPageSteps;
 
@@ -26,7 +26,7 @@ public class DoNotSaveProductTest extends AbstractShoppingListTest {
 
     @BeforeTest
     private void setUp() {
-        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(AbstractShoppingListTest.driver);
         addProductPageSteps = new AddProductPageSteps(driver);
         dialogWindowSteps = new DialogWindowSteps(driver);
         commonSteps = new CommonSteps(driver);
@@ -41,7 +41,7 @@ public class DoNotSaveProductTest extends AbstractShoppingListTest {
                                     String testComment,
                                     String measure,
                                     String category) {
-        mainPageSteps
+        shoppingListPageSteps
                 .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
@@ -54,8 +54,8 @@ public class DoNotSaveProductTest extends AbstractShoppingListTest {
                 .selectCategory(category);
         commonSteps.pressBackTwice();
         dialogWindowSteps.clickNo();
-        mainPageSteps.listWithNameExists(listName);
-        mainPageSteps.openListWithName(listName);
+        shoppingListPageSteps.listWithNameExists(listName);
+        shoppingListPageSteps.openListWithName(listName);
         addProductPageSteps
                 .productWithNameDoesNotExist(productName);
     }

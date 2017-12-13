@@ -2,13 +2,13 @@ package tests;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 import steps.MoreMenuSteps;
 import steps.SettingsPageSteps;
 
 public class CurrencySettingsTest extends AbstractShoppingListTest {
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private MoreMenuSteps moreMenuSteps;
 
@@ -16,14 +16,14 @@ public class CurrencySettingsTest extends AbstractShoppingListTest {
 
     @BeforeTest
     void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         moreMenuSteps = new MoreMenuSteps(driver);
         settingsPageSteps = new SettingsPageSteps(driver);
     }
 
     @Test(description = "[TC8] Change currency in Settings menu")
     public void checkCurrencySettings() {
-        mainPageSteps
+        shoppingListPageSteps
                 .checkPageDisplayed()
                 .clickMore();
         moreMenuSteps.checkPageDisplayed().clickSettings();

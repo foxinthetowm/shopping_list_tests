@@ -8,7 +8,7 @@ import steps.*;
 
 public class SortProductsByTest extends AbstractShoppingListTest {
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private AddProductPageSteps addProductPageSteps;
 
@@ -33,7 +33,7 @@ public class SortProductsByTest extends AbstractShoppingListTest {
 
     @BeforeTest
     private void setUp() {
-        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(AbstractShoppingListTest.driver);
         addProductPageSteps = new AddProductPageSteps(driver);
         moreMenuSteps = new MoreMenuSteps(driver);
         settingsPageSteps = new SettingsPageSteps(driver);
@@ -62,7 +62,7 @@ public class SortProductsByTest extends AbstractShoppingListTest {
                                      String category3,
                                      String sortBy,
                                      String[] expectedSorting) {
-        mainPageSteps
+        shoppingListPageSteps
                 .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();

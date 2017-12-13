@@ -3,28 +3,28 @@ package tests;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import steps.CommonSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 
 public class ClickNoInRemoveListWindowTest extends AbstractShoppingListTest {
 
     private final String listName = "New list2";
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private CommonSteps commonSteps;
 
     @BeforeTest
     public void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "TC6: Cancel shopping list deleting")
     public void clickNoInRemoveListWindow() {
-        mainPageSteps.checkPageDisplayed().setTextIntoNewListField(listName)
+        shoppingListPageSteps.checkPageDisplayed().setTextIntoNewListField(listName)
                 .clickAddButton();
         commonSteps.pressBackTwice();
-        mainPageSteps.listWithNameExists(listName)
+        shoppingListPageSteps.listWithNameExists(listName)
                 .deleteListWithName(listName).cancelDeletingList()
                 .listWithNameExists(listName);
     }

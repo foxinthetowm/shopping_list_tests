@@ -13,12 +13,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractShoppingListTest {
 
     private static final String DEFAULT_DEVICE = "Pixel_API_26";
 
+    /**
+     * Dictionary is a {@link Map} collection that contains {@link String}
+     * Android API level as a key and {@link String} device name as a value.
+     */
     private static final Map<String, String> DEVICES = new HashMap<String,
             String>
             () {{

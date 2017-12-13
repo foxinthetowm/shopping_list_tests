@@ -8,6 +8,9 @@ import pages.SettingsPage;
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ *  Steps for Settings page
+ */
 public class SettingsPageSteps extends AbstractStep {
 
     private SettingsPage settingsPage = new SettingsPage(driver);

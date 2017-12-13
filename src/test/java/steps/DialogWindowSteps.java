@@ -4,6 +4,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
 import pages.DialogWindow;
 
+/**
+ *  Steps for edit list name dialog window,
+ */
 public class DialogWindowSteps extends AbstractCommonStep {
 
     private DialogWindow dialogWindow = new DialogWindow(driver);

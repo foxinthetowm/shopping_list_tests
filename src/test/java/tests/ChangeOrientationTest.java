@@ -5,13 +5,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.CommonSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 import steps.MoreMenuSteps;
 import steps.SettingsPageSteps;
 
 public class ChangeOrientationTest extends AbstractShoppingListTest {
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private MoreMenuSteps moreMenuSteps;
 
@@ -29,7 +29,7 @@ public class ChangeOrientationTest extends AbstractShoppingListTest {
 
     @BeforeTest
     void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         moreMenuSteps = new MoreMenuSteps(driver);
         settingsPageSteps = new SettingsPageSteps(driver);
         commonSteps = new CommonSteps(driver);
@@ -39,14 +39,14 @@ public class ChangeOrientationTest extends AbstractShoppingListTest {
             dataProvider = "Orientations")
     public void checkOrientationSettings(String orientation, String
             expectedOrientation) {
-        mainPageSteps
+        shoppingListPageSteps
                 .checkPageDisplayed()
                 .clickMore();
         moreMenuSteps.checkPageDisplayed().clickSettings();
         settingsPageSteps.checkPageDisplayed().clickOrientation()
                 .selectOrientation(orientation);
         commonSteps.pressBack();
-        mainPageSteps.checkPageDisplayed();
+        shoppingListPageSteps.checkPageDisplayed();
         commonSteps.getOrientation(expectedOrientation);
     }
 

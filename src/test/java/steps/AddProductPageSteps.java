@@ -14,6 +14,9 @@ import java.util.List;
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ *  Steps for Add Product Page
+ */
 public class AddProductPageSteps extends AbstractStep {
 
     private AddProductsPage addProductsPage = new AddProductsPage(driver);

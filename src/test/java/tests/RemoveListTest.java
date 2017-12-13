@@ -3,30 +3,30 @@ package tests;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import steps.CommonSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 
 public class RemoveListTest extends AbstractShoppingListTest {
 
     private final String listName = "New list2";
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private CommonSteps commonSteps;
 
     @BeforeTest
     public void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "TC4: Remove shopping list")
     public void removeNewList() {
-        mainPageSteps.checkPageDisplayed();
-        mainPageSteps.setTextIntoNewListField(listName).clickAddButton();
+        shoppingListPageSteps.checkPageDisplayed();
+        shoppingListPageSteps.setTextIntoNewListField(listName).clickAddButton();
         commonSteps.pressBackTwice();
-        mainPageSteps.listWithNameExists(listName);
-        mainPageSteps.deleteListWithName(listName).confirmDeletingList();
-        mainPageSteps
+        shoppingListPageSteps.listWithNameExists(listName);
+        shoppingListPageSteps.deleteListWithName(listName).confirmDeletingList();
+        shoppingListPageSteps
                 .listWithNameDoesNotExist(listName);
     }
 }

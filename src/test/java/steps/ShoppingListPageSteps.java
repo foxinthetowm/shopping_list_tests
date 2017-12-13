@@ -8,19 +8,22 @@ import pages.ShoppingListsPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class MainPageSteps extends AbstractStep {
+/**
+ *  Steps for Shopping List Page
+ */
+public class ShoppingListPageSteps extends AbstractStep {
 
     private ShoppingListsPage shoppingListsPage = new ShoppingListsPage(driver);
 
     private CommonElements commonElements = new CommonElements(driver);
 
-    public MainPageSteps(AndroidDriver driver) {
+    public ShoppingListPageSteps(AndroidDriver driver) {
         super(driver);
     }
 
     @Override
     @Step("App is opened")
-    public MainPageSteps checkPageDisplayed() {
+    public ShoppingListPageSteps checkPageDisplayed() {
         shoppingListsPage.getMainPageHeader();
         assertThat("Add main page is not displayed", shoppingListsPage.getMainPageHeader
                 ().isDisplayed());
@@ -28,7 +31,7 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Check the specified list exists")
-    public MainPageSteps listWithNameExists(String listName) {
+    public ShoppingListPageSteps listWithNameExists(String listName) {
         assertThat(String.format("List with name %s does not exist.", listName),
                 driver
                         .findElementByXPath
@@ -40,7 +43,7 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Open list with name")
-    public MainPageSteps openListWithName(String listName) {
+    public ShoppingListPageSteps openListWithName(String listName) {
         driver.findElementByXPath(String.format(shoppingListsPage.getListByNameLocator(),
                 listName)
         ).click();
@@ -48,14 +51,14 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Check the list does not exist")
-    public MainPageSteps listDoesNotExist() {
+    public ShoppingListPageSteps listDoesNotExist() {
         assertThat("List exists.",
                 driver.findElementsById("com.slava.buylist:id/rr1").isEmpty());
         return this;
     }
 
     @Step("Check the specified list does not exist")
-    public MainPageSteps listWithNameDoesNotExist(String listName) {
+    public ShoppingListPageSteps listWithNameDoesNotExist(String listName) {
         assertThat(String.format("List with name %s exists", listName), driver
                 .findElementsByXPath(String.format(shoppingListsPage
                                 .getListByNameLocator(),
@@ -64,14 +67,14 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Set list name to the field")
-    public MainPageSteps setTextIntoNewListField(String listName) {
+    public ShoppingListPageSteps setTextIntoNewListField(String listName) {
         shoppingListsPage.getListNameField().click();
         shoppingListsPage.getListNameField().sendKeys(listName);
         return this;
     }
 
     @Step("Click remove the specified list")
-    public MainPageSteps deleteListWithName(String listName) {
+    public ShoppingListPageSteps deleteListWithName(String listName) {
         driver.findElementByXPath
                 (String.format(shoppingListsPage.getRemoveListButton(), listName))
                 .click();
@@ -79,19 +82,19 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Click 'Yes' in the dialog window")
-    public MainPageSteps confirmDeletingList() {
+    public ShoppingListPageSteps confirmDeletingList() {
         shoppingListsPage.getYesButton().click();
         return this;
     }
 
     @Step("Click 'No' in the dialog window")
-    public MainPageSteps cancelDeletingList() {
+    public ShoppingListPageSteps cancelDeletingList() {
         shoppingListsPage.getNoButton().click();
         return this;
     }
 
     @Step("Click 'Edit' button for list with specified name")
-    public MainPageSteps clickEditButtonListWithName(String listName) {
+    public ShoppingListPageSteps clickEditButtonListWithName(String listName) {
         WebElement editButton = driver.findElementByXPath(String.format
                 (shoppingListsPage.getEditListButton(),
                 listName));
@@ -101,13 +104,13 @@ public class MainPageSteps extends AbstractStep {
     }
 
     @Step("Click 'Add new list' button")
-    public MainPageSteps clickAddButton() {
+    public ShoppingListPageSteps clickAddButton() {
         shoppingListsPage.getAddListButton().click();
         return this;
     }
 
     @Step("Open 'More' menu")
-    public MainPageSteps clickMore() {
+    public ShoppingListPageSteps clickMore() {
         commonElements.getMoreButton().click();
         return this;
     }

@@ -5,11 +5,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.CommonSteps;
-import steps.MainPageSteps;
+import steps.ShoppingListPageSteps;
 
 public class AddEmptyListTest extends AbstractShoppingListTest {
 
-    private MainPageSteps mainPageSteps;
+    private ShoppingListPageSteps shoppingListPageSteps;
 
     private CommonSteps commonSteps;
 
@@ -21,19 +21,19 @@ public class AddEmptyListTest extends AbstractShoppingListTest {
 
     @BeforeTest
     public void setUp() {
-        mainPageSteps = new MainPageSteps(driver);
+        shoppingListPageSteps = new ShoppingListPageSteps(driver);
         commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC1] Add an empty shopping list", dataProvider =
             "Valid list names")
     public void addEmptyList(String listName) {
-        mainPageSteps
+        shoppingListPageSteps
                 .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
         commonSteps.pressBackTwice();
-        mainPageSteps.listWithNameExists(listName);
+        shoppingListPageSteps.listWithNameExists(listName);
     }
 
     @AfterMethod

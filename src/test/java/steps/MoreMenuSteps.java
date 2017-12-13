@@ -6,6 +6,9 @@ import pages.MoreMenu;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ *  Steps for More menu view
+ */
 public class MoreMenuSteps extends AbstractStep {
 
     private MoreMenu moreMenu = new MoreMenu(driver);

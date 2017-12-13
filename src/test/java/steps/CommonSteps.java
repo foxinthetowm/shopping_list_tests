@@ -6,6 +6,9 @@ import io.qameta.allure.Step;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ *  Steps for common elements
+ */
 public class CommonSteps extends AbstractCommonStep {
 
     public CommonSteps(AndroidDriver driver) {
