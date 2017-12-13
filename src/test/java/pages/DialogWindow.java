@@ -4,6 +4,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
+/**
+ * Edit list name dialog window.
+ */
 public class DialogWindow extends AbstractPage {
 
     @AndroidFindBy(className = "android.widget.EditText")

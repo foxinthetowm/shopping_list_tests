@@ -4,6 +4,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
+/**
+ * Add products to the created shopping list page
+ */
 public class AddProductsPage extends AbstractPage {
 
     @AndroidFindBy(id = "com.slava.buylist:id/editText1")

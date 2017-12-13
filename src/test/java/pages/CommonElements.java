@@ -4,6 +4,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
+/**
+ * Elements which are present on several app screens.
+ */
 public class CommonElements extends AbstractPage {
 
     private String itemInDropDownWithName = "//android.widget" +

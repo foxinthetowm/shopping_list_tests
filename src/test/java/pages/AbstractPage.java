@@ -6,10 +6,18 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * A base for all the pages
+ */
 public abstract class AbstractPage {
 
     protected final AndroidDriver driver;
 
+    /**
+     * Constructor sets the driver
+     *
+     * @param driver the driver created in the @BeforeSuite method.
+     */
     protected AbstractPage(AndroidDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver, 20, TimeUnit

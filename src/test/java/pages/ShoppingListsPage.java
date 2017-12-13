@@ -4,7 +4,10 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class MainPage extends AbstractPage {
+/**
+ * A page representing shipping lists and Add New List form
+ */
+public class ShoppingListsPage extends AbstractPage {
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
     private MobileElement listNameField;
@@ -34,7 +37,7 @@ public class MainPage extends AbstractPage {
             ".widget.TextView[@text='%s']]/android.widget" +
             ".ImageView[@resource-id='com.slava.buylist:id/imageView2']";
 
-    public MainPage(AndroidDriver driver) {
+    public ShoppingListsPage(AndroidDriver driver) {
         super(driver);
     }
 
