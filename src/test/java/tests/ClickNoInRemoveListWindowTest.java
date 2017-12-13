@@ -7,8 +7,6 @@ import steps.ShoppingListPageSteps;
 
 public class ClickNoInRemoveListWindowTest extends AbstractShoppingListTest {
 
-    private final String listName = "New list2";
-
     private ShoppingListPageSteps shoppingListPageSteps;
 
     private CommonSteps commonSteps;
@@ -21,11 +19,13 @@ public class ClickNoInRemoveListWindowTest extends AbstractShoppingListTest {
 
     @Test(description = "TC6: Cancel shopping list deleting")
     public void clickNoInRemoveListWindow() {
-        shoppingListPageSteps.checkPageDisplayed().setTextIntoNewListField(listName)
+        String list_name = "New list2";
+        shoppingListPageSteps.checkPageDisplayed().setTextIntoNewListField
+                (list_name)
                 .clickAddButton();
         commonSteps.pressBackTwice();
-        shoppingListPageSteps.listWithNameExists(listName)
-                .deleteListWithName(listName).cancelDeletingList()
-                .listWithNameExists(listName);
+        shoppingListPageSteps.listWithNameExists(list_name)
+                .deleteListWithName(list_name).cancelDeletingList()
+                .listWithNameExists(list_name);
     }
 }

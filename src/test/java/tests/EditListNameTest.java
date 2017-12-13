@@ -8,10 +8,6 @@ import steps.ShoppingListPageSteps;
 
 public class EditListNameTest extends AbstractShoppingListTest {
 
-    private final String oldName = "New list";
-
-    private final String newName = "New list2";
-
     private ShoppingListPageSteps shoppingListPageSteps;
 
     private DialogWindowSteps editListWindowStep;
@@ -27,6 +23,8 @@ public class EditListNameTest extends AbstractShoppingListTest {
 
     @Test(description = "[TC3] Edit list: edit name")
     public void editListName() {
+        String oldName = "New list";
+        String newName = "New list2";
         shoppingListPageSteps.checkPageDisplayed();
         shoppingListPageSteps.setTextIntoNewListField(oldName).clickAddButton();
         commonSteps.pressBackTwice();

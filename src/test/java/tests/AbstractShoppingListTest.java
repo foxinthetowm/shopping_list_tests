@@ -18,6 +18,14 @@ public abstract class AbstractShoppingListTest {
 
     private static final String DEFAULT_DEVICE = "Pixel_API_26";
 
+    private static final String PROPERTY_NAME = "api_version";
+
+    private static final String APK_NAME = "Shopping_list_1.6.apk";
+
+    private static final String URL = "http://127.0.0.1:4723/wd/hub";
+
+    private static final String APK_PATH = "src/test/resources/";
+
     /**
      * Dictionary is a {@link Map} collection that contains {@link String}
      * Android API level as a key and {@link String} device name as a value.
@@ -35,12 +43,12 @@ public abstract class AbstractShoppingListTest {
 
     @BeforeSuite
     public void setUpAppium() throws MalformedURLException {
-        URL url = new URL("http://127.0.0.1:4723/wd/hub");
-        File appDir = new File("src/test/resources/");
-        File app = new File(appDir, "Shopping_list_1.6.apk");
+        URL url = new URL(URL);
+        File appDir = new File(APK_PATH);
+        File app = new File(appDir, APK_NAME);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
-                getDeviceName(System.getProperty("api_version")));
+                getDeviceName(System.getProperty(PROPERTY_NAME)));
         capabilities.setCapability(MobileCapabilityType.APP, app
                 .getAbsolutePath());
         driver = new AndroidDriver(url,
