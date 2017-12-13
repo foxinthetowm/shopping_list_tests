@@ -4,34 +4,32 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.MainPage;
+import steps.MainPageSteps;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+public class AddListWithEmptyNameWithShortName extends
+        AbstractShoppingListTest {
 
-public class AddListWithEmptyNameWithShortName extends AbstractShoppingListTest {
-
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
 
     @DataProvider(name = "Invalid list names")
-    public static Object[][] listNames( ) {
-        return new Object[][]{ { "" }, { "11" }, { "aa" }, { "!@" }, { "  "
-        }, { "__" } };
+    public static Object[][] listNames() {
+        return new Object[][]{{""}, {"11"}, {"aa"}, {"!@"}, {"  "
+        }, {"__"}};
     }
 
     @BeforeTest
-    public void setUp( ) {
-        mainPage = new MainPage(AbstractShoppingListTest.driver);
+    public void setUp() {
+        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
     }
 
     @Test(description = "[TC5] Check user cannot add a list with name shorter" +
             " " +
             "that 3 symbols", dataProvider = "Invalid list names")
     public void addNewListWithShortName(String listName) {
-        mainPage
-                .headerDisplayed()
+        mainPageSteps
+                .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
-                .clickAddButton();
-        assertThat("List exists", mainPage.listDoesNotExist());
+                .clickAddButton().listDoesNotExist();
     }
 
     @AfterMethod

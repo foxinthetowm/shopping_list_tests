@@ -4,46 +4,40 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.AddProductsPage;
-import pages.MainPage;
-import pages.MoreMenu;
-import pages.SettingsPage;
-
-import java.util.Arrays;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import steps.*;
 
 public class SortProductsByTest extends AbstractShoppingListTest {
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
 
-    private AddProductsPage productsPage;
+    private AddProductPageSteps addProductPageSteps;
 
-    private MoreMenu moreMenu;
+    private MoreMenuSteps moreMenuSteps;
 
-    private SettingsPage settingsPage;
+    private SettingsPageSteps settingsPageSteps;
+
+    private CommonSteps commonSteps;
 
     @DataProvider(name = "Products parameters")
-    public static Object[][] listNames( ) {
-        return new Object[][]{ { "New list", "aaa", "3", "2", "comment",
+    public static Object[][] listNames() {
+        return new Object[][]{{"New list", "aaa", "3", "2", "comment",
                 "kg.", "Pet products", "bbb", "4", "1",
                 "comment", "kg.", "Medications", "ccc", "1", "0", "comment",
                 "kg.", "Dairy produce", "By category", new String[]
-                { "ccc",
-                        "aaa", "bbb" } }, {
-                "New list2", "aaa", "3", "2", "comment",
-                "kg.", "Pet products", "bbb", "4", "1",
+                {"ccc", "aaa", "bbb"}}, {"New list2", "aaa", "3", "2",
+                "comment", "kg.", "Pet products", "bbb", "4", "1",
                 "comment", "kg.", "Medications", "ccc", "1", "0", "comment",
                 "kg.", "Dairy produce", "By alphabet", new String[]
-                { "aaa", "bbb", "ccc" } } };
+                {"aaa", "bbb", "ccc"}}};
     }
 
     @BeforeTest
-    private void setUp( ) {
-        mainPage = new MainPage(AbstractShoppingListTest.driver);
-        productsPage = new AddProductsPage(driver);
-        moreMenu = new MoreMenu(driver);
-        settingsPage = new SettingsPage(driver);
+    private void setUp() {
+        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
+        addProductPageSteps = new AddProductPageSteps(driver);
+        moreMenuSteps = new MoreMenuSteps(driver);
+        settingsPageSteps = new SettingsPageSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC7] Edit list: add a product", dataProvider =
@@ -68,29 +62,30 @@ public class SortProductsByTest extends AbstractShoppingListTest {
                                      String category3,
                                      String sortBy,
                                      String[] expectedSorting) {
-        mainPage
-                .headerDisplayed()
+        mainPageSteps
+                .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
-        productsPage.addProductScreenDisplayed();
-        productsPage.
+        addProductPageSteps.checkPageDisplayed();
+        addProductPageSteps.
                 addNewProduct(productName1, price1, amount1, testComment1,
                         measure1, category1);
-        productsPage.addNewProduct(productName2, price2, amount2, testComment2,
+        addProductPageSteps.addNewProduct(productName2, price2, amount2,
+                testComment2,
                 measure2, category2);
-        productsPage.addNewProduct(productName3, price3, amount3, testComment3,
+        addProductPageSteps.addNewProduct(productName3, price3, amount3,
+                testComment3,
                 measure3, category3);
-        productsPage.clickMore();
-        moreMenu.clickSettings();
-        settingsPage.clickSortBy().selectSortBy(sortBy).pressBack();
-        assertThat("Products have wrong order", Arrays.asList
-                (expectedSorting).equals(productsPage
-                .getOrderedProductList
-                        ()));
+        addProductPageSteps.clickMore();
+        moreMenuSteps.checkPageDisplayed().clickSettings();
+        settingsPageSteps.checkPageDisplayed().clickSortBy().selectSortBy
+                (sortBy);
+        commonSteps.pressBack();
+        addProductPageSteps.getOrderedProductList(expectedSorting);
     }
 
     @AfterMethod
-    public void restartApp( ) {
+    public void restartApp() {
         driver.resetApp();
     }
 }

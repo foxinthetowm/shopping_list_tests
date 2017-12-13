@@ -3,31 +3,33 @@ package tests;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.AddProductsPage;
-import pages.DialogWindow;
-import pages.MainPage;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import steps.AddProductPageSteps;
+import steps.CommonSteps;
+import steps.DialogWindowSteps;
+import steps.MainPageSteps;
 
 public class DoNotSaveProductTest extends AbstractShoppingListTest {
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
 
-    private AddProductsPage productsPage;
+    private AddProductPageSteps addProductPageSteps;
 
-    private DialogWindow dialogWindow;
+    private DialogWindowSteps dialogWindowSteps;
+
+    private CommonSteps commonSteps;
 
     @DataProvider(name = "Products parameters")
-    public static Object[][] listNames( ) {
-        return new Object[][]{ { "New list", "product1", "2", "5", "comment",
-                "kg.", "Pet products" } };
+    public static Object[][] listNames() {
+        return new Object[][]{{"New list", "product1", "2", "5", "comment",
+                "kg.", "Pet products"}};
     }
 
     @BeforeTest
-    private void setUp( ) {
-        mainPage = new MainPage(AbstractShoppingListTest.driver);
-        productsPage = new AddProductsPage(driver);
-        dialogWindow = new DialogWindow(driver);
+    private void setUp() {
+        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
+        addProductPageSteps = new AddProductPageSteps(driver);
+        dialogWindowSteps = new DialogWindowSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC8] Create a list but do not save a new product",
@@ -39,22 +41,22 @@ public class DoNotSaveProductTest extends AbstractShoppingListTest {
                                     String testComment,
                                     String measure,
                                     String category) {
-        mainPage
-                .headerDisplayed()
+        mainPageSteps
+                .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
-        productsPage.addProductScreenDisplayed();
-        productsPage.setTextToProductNameField(productName)
+        addProductPageSteps.checkPageDisplayed();
+        addProductPageSteps.setTextToProductNameField(productName)
                 .setTextToProductPriceField(price)
                 .setTextToProductAmountField(amount)
                 .setTextToProductCommentField(testComment)
                 .selectMeasure(measure)
-                .selectCategory(category).pressBackTwice();
-        dialogWindow.clickNo();
-        mainPage.listWithNameExists(listName);
-        mainPage.openListWithName(listName);
-        assertThat(String.format("Product with name %s was added",
-                productName), productsPage
-                .productWithNameDoesNotExist(productName));
+                .selectCategory(category);
+        commonSteps.pressBackTwice();
+        dialogWindowSteps.clickNo();
+        mainPageSteps.listWithNameExists(listName);
+        mainPageSteps.openListWithName(listName);
+        addProductPageSteps
+                .productWithNameDoesNotExist(productName);
     }
 }

@@ -4,17 +4,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import pages.AddProductsPage;
-import pages.MainPage;
+import steps.AddProductPageSteps;
+import steps.CommonSteps;
+import steps.MainPageSteps;
 
 public class CreateListWithItemsTest extends AbstractShoppingListTest {
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
 
-    private AddProductsPage productsPage;
+    private AddProductPageSteps addProductPageSteps;
 
-    private SoftAssert softAssertion = new SoftAssert();
+    private CommonSteps commonSteps;
 
     @DataProvider(name = "Products parameters")
     public static Object[][] listNames( ) {
@@ -26,8 +26,9 @@ public class CreateListWithItemsTest extends AbstractShoppingListTest {
 
     @BeforeTest
     private void setUp( ) {
-        mainPage = new MainPage(AbstractShoppingListTest.driver);
-        productsPage = new AddProductsPage(driver);
+        mainPageSteps = new MainPageSteps(AbstractShoppingListTest.driver);
+        addProductPageSteps = new AddProductPageSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC2] Create a list with item", dataProvider =
@@ -40,28 +41,20 @@ public class CreateListWithItemsTest extends AbstractShoppingListTest {
                                    String measure,
                                    String category,
                                    String total) {
-        mainPage
-                .headerDisplayed()
+        mainPageSteps
+                .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
                 .clickAddButton();
-        productsPage.addProductScreenDisplayed();
-        productsPage.addNewProduct(productName, price, amount, testComment,
+        addProductPageSteps.checkPageDisplayed();
+        addProductPageSteps.addNewProduct(productName, price, amount,
+                testComment,
                 measure, category);
-        softAssertion.assertTrue(productsPage.productWithNameExists
-                (productName));
-        softAssertion.assertTrue(productsPage.checkQuantityOfProductWithName
-                (productName, amount
-                        + " " + measure));
-        softAssertion.assertTrue(productsPage.checkPriceOfProductWithName
-                (productName, price));
-        softAssertion.assertTrue(productsPage.checkCommentForProductWithName
-                (productName,
-                        testComment));
-        softAssertion.assertTrue(productsPage.checkTotal(total));
-        softAssertion.assertAll();
-        mainPage.pressBackTwice();
-        softAssertion.assertTrue(mainPage.listWithNameExists(listName));
-        softAssertion.assertAll();
+        addProductPageSteps.checkProductParameters(productName,
+                amount,
+                measure, price,
+                testComment).checkTotal(total);
+        commonSteps.pressBackTwice();
+        mainPageSteps.listWithNameExists(listName);
     }
 
     @AfterMethod

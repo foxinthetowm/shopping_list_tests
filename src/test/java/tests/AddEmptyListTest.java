@@ -4,36 +4,36 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.MainPage;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import steps.CommonSteps;
+import steps.MainPageSteps;
 
 public class AddEmptyListTest extends AbstractShoppingListTest {
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
+
+    private CommonSteps commonSteps;
 
     @DataProvider(name = "Valid list names")
     public static Object[][] listNames() {
-        return new Object[][]{ { "list" }, { "List name" }, { "aaa" }, {
-                "!@!" }, { "   " }, { "Is it 30 symbols string? Yep!!" } };
+        return new Object[][]{{"list"}, {"List name"}, {"aaa"}, {
+                "!@!"}, {"   "}, {"Is it 30 symbols string? Yep!!"}};
     }
 
     @BeforeTest
     public void setUp() {
-        mainPage = new MainPage(AbstractShoppingListTest.driver);
+        mainPageSteps = new MainPageSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC1] Add an empty shopping list", dataProvider =
             "Valid list names")
     public void addEmptyList(String listName) {
-        mainPage
-                .headerDisplayed()
+        mainPageSteps
+                .checkPageDisplayed()
                 .setTextIntoNewListField(listName)
-                .clickAddButton()
-                .pressBackTwice();
-        assertThat(String.format("List with name %s does not exist",
-                listName), mainPage
-                .listWithNameExists(listName));
+                .clickAddButton();
+        commonSteps.pressBackTwice();
+        mainPageSteps.listWithNameExists(listName);
     }
 
     @AfterMethod

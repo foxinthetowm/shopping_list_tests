@@ -17,39 +17,44 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractShoppingListTest {
 
+    private static final String DEFAULT_DEVICE = "Pixel_API_26";
+
+    private static final Map<String, String> DEVICES = new HashMap<String,
+            String>
+            () {{
+        put("26", "Pixel_API_26");
+        put("25", "Pixel_API_25");
+        put("24", "Nexus 5X API 24");
+        put("23", "Nexus 5 API 23");
+    }};
+
     protected static AndroidDriver<AndroidElement> driver;
 
     @BeforeSuite
-    public void setUpAppium( ) throws MalformedURLException {
+    public void setUpAppium() throws MalformedURLException {
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
         File appDir = new File("src/test/resources/");
         File app = new File(appDir, "Shopping_list_1.6.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
-                getDeviceName(System.getProperty("api")));
+                getDeviceName(System.getProperty("api_version")));
         capabilities.setCapability(MobileCapabilityType.APP, app
                 .getAbsolutePath());
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+        driver = new AndroidDriver(url,
                 capabilities);
-        driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
+    }
+
+    private String getDeviceName(String api) {
+        return (api == null) ? DEFAULT_DEVICE : DEVICES.get(api);
     }
 
     @AfterSuite
-    public void tearDownAppium( ) {
+    public void tearDownAppium() {
         driver.quit();
     }
 
     @AfterClass
-    public void restartApp( ) {
+    public void restartApp() {
         driver.resetApp();
-    }
-
-    private String getDeviceName(String api) {
-        Map<String, String> devices = new HashMap<>();
-        devices.put("26", "Pixel_API_26");
-        devices.put("25", "Pixel_API_25");
-        devices.put("24", "Nexus 5X API 24");
-        devices.put("23", "Nexus 5 API 23");
-        return devices.get(api);
     }
 }

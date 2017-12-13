@@ -2,10 +2,9 @@ package tests;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.DialogWindow;
-import pages.MainPage;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import steps.CommonSteps;
+import steps.DialogWindowSteps;
+import steps.MainPageSteps;
 
 public class EditListNameTest extends AbstractShoppingListTest {
 
@@ -13,26 +12,28 @@ public class EditListNameTest extends AbstractShoppingListTest {
 
     private final String newName = "New list2";
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
 
-    private DialogWindow editListWindow;
+    private DialogWindowSteps editListWindowStep;
+
+    private CommonSteps commonSteps;
 
     @BeforeTest
-    public void setUp( ) {
-        mainPage = new MainPage(driver);
-        editListWindow = new DialogWindow(driver);
-        mainPage.headerDisplayed();
-        mainPage.setTextIntoNewListField(oldName).clickAddButton()
-                .pressBackTwice();
-        mainPage.listWithNameExists(oldName);
+    public void setUp() {
+        mainPageSteps = new MainPageSteps(driver);
+        editListWindowStep = new DialogWindowSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "[TC3] Edit list: edit name")
-    public void editListName( ) {
-        mainPage.clickEditButtonListWithName(oldName);
-        editListWindow.setTextToTheNameField(newName).clickOk();
-        assertThat(String.format("List with name %s does not exist", newName),
-                mainPage
-                        .listWithNameExists(newName));
+    public void editListName() {
+        mainPageSteps.checkPageDisplayed();
+        mainPageSteps.setTextIntoNewListField(oldName).clickAddButton();
+        commonSteps.pressBackTwice();
+        mainPageSteps.listWithNameExists(oldName);
+        mainPageSteps.clickEditButtonListWithName(oldName);
+        editListWindowStep.setTextToTheNameField(newName).clickOk();
+        mainPageSteps
+                .listWithNameExists(newName);
     }
 }

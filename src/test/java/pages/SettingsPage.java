@@ -3,11 +3,8 @@ package pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.qameta.allure.Step;
 
-public class SettingsPage extends Page {
-
-    CommonElements commonElements = new CommonElements(driver);
+public class SettingsPage extends AbstractPage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Currency']")
     MobileElement currency;
@@ -27,44 +24,19 @@ public class SettingsPage extends Page {
         super(driver);
     }
 
-    @Step("Click 'Currency' setting")
-    public SettingsPage clickCurrency() {
-        currency.click();
-        return this;
+    public MobileElement getCurrency() {
+        return currency;
     }
 
-    @Step("Check current currency value")
-    public boolean checkCurrentCurrency(String expectedCurrency) {
-        return currentCurrency.getText().equals(expectedCurrency);
+    public MobileElement getOrientation() {
+        return orientation;
     }
 
-    @Step("Select currency")
-    public SettingsPage selectCurrency(String currency) {
-        commonElements.selectItemWithName(currency);
-        return this;
+    public MobileElement getSortBy() {
+        return sortBy;
     }
 
-    @Step("Click 'Orientation' setting")
-    public SettingsPage clickOrientation() {
-        orientation.click();
-        return this;
-    }
-
-    @Step("Click 'Sort By' setting")
-    public SettingsPage clickSortBy() {
-        sortBy.click();
-        return this;
-    }
-
-    @Step("Select orientation")
-    public SettingsPage selectOrientation(String orientation) {
-        commonElements.selectItemWithName(orientation);
-        return this;
-    }
-
-    @Step("Select sort by")
-    public SettingsPage selectSortBy(String sortBy) {
-        commonElements.selectItemWithName(sortBy);
-        return this;
+    public MobileElement getCurrentCurrency() {
+        return currentCurrency;
     }
 }

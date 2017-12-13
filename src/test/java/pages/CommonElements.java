@@ -4,27 +4,23 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-import static java.lang.String.format;
-
-public class CommonElements extends Page {
+public class CommonElements extends AbstractPage {
 
     private String itemInDropDownWithName = "//android.widget" +
             ".CheckedTextView[@text='%s']";
 
-
     @AndroidFindBy(id = "com.slava.buylist:id/button1")
     private MobileElement moreButton;
 
-    protected CommonElements(AndroidDriver driver) {
+    public CommonElements(AndroidDriver driver) {
         super(driver);
     }
 
-    protected void selectItemWithName(String itemName) {
-        driver.findElementByXPath(format(itemInDropDownWithName, itemName))
-                .click();
+    public String getItemInDropDownWithName() {
+        return itemInDropDownWithName;
     }
 
-    protected void clickMore( ) {
-        moreButton.click();
+    public MobileElement getMoreButton() {
+        return moreButton;
     }
 }

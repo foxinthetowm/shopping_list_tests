@@ -3,9 +3,8 @@ package pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.qameta.allure.Step;
 
-public class DialogWindow extends Page {
+public class DialogWindow extends AbstractPage {
 
     @AndroidFindBy(className = "android.widget.EditText")
     private MobileElement listName;
@@ -20,23 +19,15 @@ public class DialogWindow extends Page {
         super(driver);
     }
 
-    @Step("Set a new name for specified list")
-    public DialogWindow setTextToTheNameField(String nameList) {
-        listName.isDisplayed();
-        listName.clear();
-        listName.sendKeys(nameList);
-        return this;
+    public MobileElement getListName() {
+        return listName;
     }
 
-    @Step("Click ok button in the dialog window")
-    public DialogWindow clickOk() {
-        okButton.click();
-        return this;
+    public MobileElement getOkButton() {
+        return okButton;
     }
 
-    @Step("Click no button in the dialog window")
-    public DialogWindow clickNo() {
-        noButton.click();
-        return this;
+    public MobileElement getNoButton() {
+        return noButton;
     }
 }

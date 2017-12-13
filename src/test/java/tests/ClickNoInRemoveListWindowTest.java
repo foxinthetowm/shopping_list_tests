@@ -2,31 +2,30 @@ package tests;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.MainPage;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import steps.CommonSteps;
+import steps.MainPageSteps;
 
 public class ClickNoInRemoveListWindowTest extends AbstractShoppingListTest {
 
     private final String listName = "New list2";
 
-    private MainPage mainPage;
+    private MainPageSteps mainPageSteps;
+
+    private CommonSteps commonSteps;
 
     @BeforeTest
-    public void setUp( ) {
-        mainPage = new MainPage(driver);
+    public void setUp() {
+        mainPageSteps = new MainPageSteps(driver);
+        commonSteps = new CommonSteps(driver);
     }
 
     @Test(description = "TC6: Cancel shopping list deleting")
-    public void clickNoInRemoveListWindow( ) {
-        mainPage.headerDisplayed();
-        mainPage.setTextIntoNewListField(listName);
-        mainPage.clickAddButton();
-        mainPage.pressBackTwice();
-        mainPage.listWithNameExists(listName);
-        mainPage.deleteListWithName(listName).cancelDeletingList();
-        assertThat(String.format("List with name %s exists", listName)
-                , mainPage
-                        .listWithNameExists(listName));
+    public void clickNoInRemoveListWindow() {
+        mainPageSteps.checkPageDisplayed().setTextIntoNewListField(listName)
+                .clickAddButton();
+        commonSteps.pressBackTwice();
+        mainPageSteps.listWithNameExists(listName)
+                .deleteListWithName(listName).cancelDeletingList()
+                .listWithNameExists(listName);
     }
 }
