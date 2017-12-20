@@ -17,6 +17,8 @@ public class ShoppingListPageSteps extends AbstractStep {
 
     private CommonElements commonElements = new CommonElements(driver);
 
+    private CommonSteps commonSteps = new CommonSteps(driver);
+
     public ShoppingListPageSteps(AndroidDriver driver) {
         super(driver);
     }
@@ -98,7 +100,7 @@ public class ShoppingListPageSteps extends AbstractStep {
         WebElement editButton = driver.findElementByXPath(String.format
                 (shoppingListsPage.getEditListButton(),
                 listName));
-        editButton.isDisplayed();
+        commonSteps.waitUntilDisplayed(editButton);
         editButton.click();
         return this;
     }

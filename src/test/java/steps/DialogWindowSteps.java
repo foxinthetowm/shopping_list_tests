@@ -5,11 +5,13 @@ import io.qameta.allure.Step;
 import pages.DialogWindow;
 
 /**
- *  Steps for edit list name dialog window,
+ * Steps for edit list name dialog window,
  */
 public class DialogWindowSteps extends AbstractCommonStep {
 
     private DialogWindow dialogWindow = new DialogWindow(driver);
+
+    private CommonSteps commonSteps = new CommonSteps(driver);
 
     public DialogWindowSteps(AndroidDriver driver) {
         super(driver);
@@ -17,7 +19,7 @@ public class DialogWindowSteps extends AbstractCommonStep {
 
     @Step("Set a new name for specified list")
     public DialogWindowSteps setTextToTheNameField(String nameList) {
-        dialogWindow.getListName().isDisplayed();
+        commonSteps.waitUntilDisplayed(dialogWindow.getListName());
         dialogWindow.getListName().clear();
         dialogWindow.getListName().sendKeys(nameList);
         return this;
