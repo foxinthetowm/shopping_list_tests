@@ -1,6 +1,1 @@
-**Motivation**
-
-This test project was created in order to show it to my mentor. 
-
-
-**Getting started**
+Test framework to test a simple Android application
